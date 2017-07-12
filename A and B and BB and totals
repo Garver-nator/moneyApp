@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<!-- this file includes cash register A, cash register B, buyback register BB and the totals at the end.
+the totals will add from each of the registers, calculate all the monies and fill in all the fields
+-->
+
+<body>
+<!-- table A -->
+<table border="2px" style="float:left; width: 90%; margin-left: 5%;">
+
+	<tr class="">
+    		<td><label id='initialsLabel'>Your Initials:</label></td>
+		<td><input class='initialsA' type='text'  ></input></td>
+	</tr>
+	
+	<tr class="">
+    		<td><label id='registernumberLabel'>Register #:</label></td>
+    		<td><input id='registernumberA' type='number' maxlength='2'></input></td>
+	</tr>
+	
+	<tr class="">
+    		<td><label id='dateLabel'>Receipt DATE:</label></td>
+    		<td><input class='dateA' type='text' ></input></td>
+	</tr>
+	
+	
+	<tr class="">
+    		<td><label id='cashandcoinreceiptLabel' type='number'>Cash and Coin from Receipt:</label></td>
+		<td><input id='cashandcoinreceiptA' type='number' maxlength='10' value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='numberofchecksLabel' type='number'>Number of Checks:</label></td>
+		<td><input id='numberofchecksA' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='checksLabel' type='number' for='checksField'>Total Dollar Amount of Checks:</label></td>
+		<td><input id='checksA' type='number' maxlength='10' value="0"></td>
+
+	</tr>
+	
+		
+	<tr class="">
+    		<td><label id='discoverLabel' type='number' >Discover Credit Card:</label></td>
+		<td><input id='discoverA' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='financialaidLabel' type='number'>Financial Aid Total:</label></td>
+		<td><input id='financialaidA' type='number' value="0"></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id="manualcreditcardLabel" type='number' >Manual Credit Card:</label></td>
+		<td><input id='manualcreditcardA' type='number' maxlength='10' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='mastercard1Label' type='number' >Mastercard:</label></td>
+		<td><input id='mastercard1A' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='mastercard2Label' type='number'>Mastercard (2):</label></td>
+		<td><input id='mastercard2A' type='number' maxlength='10' value="0"></input></td>
+
+	</tr>
+	
+
+	<tr class="">
+    		<td><label id='visa1Label' type='number'>Visa:</label></td>
+		<td><input id='visa1A' type='number' value="0"></input></td>
+
+	</tr>
+	
+
+	<tr class="">
+    		<td><label id='visa2Label' type='number'>Visa (2):</label></td>
+		<td><input id='visa2A' type='number' maxlength='10' value="0"></input></td>
+	</tr>
+	
+	<tr  style="font-weight: bold;" class="">
+		<td><label id="totalreceiptsLabel">Total Receipts</label></td>
+		<td><p id='totalreceiptsA' value="0"></p></td>
+	</tr>
+	
+	<tr class="" style="font-weight: bold;">
+			<td><label id="totaldepositsLabel">Total Deposits</label></td>
+		<td><p id="totaldepositsA"></p></td>
+	</tr>
+
+	<tr class="">
+    		<td><label id='salestax1Label' type='number' >Sales Tax 1:</label></td>
+		<td><input id='salestax1A' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='salestax2Label' type='number'>Sales Tax 2:</label></td>
+		<td><input id='salestax2A' type='number'  value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='efolletttaxLabel' type='number'>eFollett Tax:</label></td>
+		<td><input id='efolletttaxA' type='number'  value="0"></input></td>
+
+	</tr>
+	
+		
+	<tr class="">
+    		<td><label id='purchasedgiftcertLabel' type='number'>Purchased Gift Certificates:</label></td>
+		<td><input id='purchasedgiftcertA' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr style="font-weight: bold;" class="">
+			<td><label id="lessLabel">Less:</label></td>
+		<td><p id="lessA"></p></td>
+	</tr>
+
+
+	
+
+	<tr class="">
+    		<td><label id='redeemedgiftcertLabel' type='number' >Redeemed Gift Certificates:</label></td>
+		<td><input id='redeemedgiftcertA' type='number'  value="0"></input></td>
+
+	</tr>
+	
+
+	<tr class="">
+    		<td><label id='onaccountLabel' type='number'>On Account Sales:</label></td>
+		<td><input id='onaccountA' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr style="font-weight: bold;" class="">
+			<td><label id="plusLabel"  >Plus:</label></td>
+		<td><p id="plusA"></p></td>
+	</tr>
+	
+	
+	
+		<tr style="font-weight: bold;" class="">
+			<td><label id="netsalesLabel"  >Net Sales</label></td>
+		<td><p id="netsalesA"></p></td>
+	</tr>
+	
+	<tr class="">
+    		<td><label id='totaltransactionsLabel' type='number'>Total Transactions:</label></td>
+		<td><input id='totaltransactionsA' type='number'  value="0"></input></td>
+
+	</tr>
+
+	<tr class="">
+    		<td><label id='rentalincomeLabel' type='number' >Total Rental Income:</label></td>
+		<td><input id='rentalincomeA' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='paidoutLabel' type='number' >Paid In (from Paidout Transaction Summary Total as positive number):</label></td>
+		<td><input id='paidoutA' type='number' value="0"></input></td>
+
+	</tr>
+</table>
+<table border="2px" style="float:left; width: 90%; margin-right: 5%;">
+	<tr>
+		<td style="text-align: center;"><p>CASH REGISTER ONLY</p></td><td style="text-align: center;"><p>ONE SHEET PER REGISTER</p></td>
+	</tr>
+	<tr class="">
+    		<td><label id='cashandcoinbagLabel' type='number' >Counted Cash, Coin & Check from Bag:</label></td>
+		<td><input id='cashandcoinbagA' type='number'  value="0"></input></td>
+
+	</tr>
+	
+	
+	<tr class="" style="font-weight: bold; ">
+    		<td style="text-align: right;"><label id='totalcountedLabel' type='number' >Total Counted:</label></td>
+		<td><p id='totalcountedA' type='number' style="text-align: left;"></p></td>
+
+	</tr>
+		<tr class="" style="font-weight: bold;">
+    		<td style="text-align: right;"><label id='totalfromreceiptLabel' type='number'>Total From Receipt:</label></td>
+		<td><p id='totalfromreceiptA' type='number' style="text-align: left;"></p></td>
+
+	</tr>
+	
+	<tr class="" style="font-weight: bold;">
+    		<td  style="text-align: right;"><label id='overshortLabel' type='number' >Over/Short:</label></td>
+		<td><p id='overshortA' type='number' style="text-align: left;"></p></td>
+
+	</tr>
+	
+	 <tr class="">
+    		<td><button id='calculateButtonA' type='button'>Calculate</button></td>
+		 
+	</tr>
+</table>
+<br><br><br><br><br>
+<!-- script to calclate A -->
+<script>
+
+function calculateA() {
+
+var cashandcoinreceiptFieldA = document.getElementById('cashandcoinreceiptA').value;
+var checksFieldA = document.getElementById('checksA').value;
+var discoverFieldA = document.getElementById('discoverA').value;
+var financialaidFieldA = document.getElementById('financialaidA').value;
+var manualcreditcardFieldA = document.getElementById('manualcreditcardA').value;
+var mastercard1FieldA = document.getElementById('mastercard1A').value;
+var mastercard2FieldA = document.getElementById('mastercard2A').value;
+var visa1FieldA = document.getElementById('visa1A').value;
+var visa2FieldA = document.getElementById('visa2A').value;
+
+var totalreceiptsSumA = parseFloat(cashandcoinreceiptFieldA) + parseFloat(checksFieldA) + parseFloat(financialaidFieldA) + parseFloat(checksFieldA) 
++ parseFloat(discoverFieldA) + parseFloat(manualcreditcardFieldA) + parseFloat(mastercard1FieldA) + parseFloat(mastercard2FieldA) 
++ parseFloat(visa1FieldA) + parseFloat(visa2FieldA);
+totalreceiptsA.textContent = totalreceiptsSumA.toFixed(2);
+
+var salestax1FieldA = document.getElementById('salestax1A').value;
+var salestax2FieldA = document.getElementById('salestax2A').value;
+var efolletttaxFieldA = document.getElementById('efolletttaxA').value;
+var purchasedgiftcertFieldA = document.getElementById('purchasedgiftcertA').value;
+
+var lessSumA = parseFloat(salestax1FieldA) + parseFloat(salestax2FieldA) + parseFloat(efolletttaxFieldA) + parseFloat(purchasedgiftcertFieldA);
+lessA.textContent = lessSumA.toFixed(2);
+
+var redeemedgiftcertFieldA = document.getElementById('redeemedgiftcertA').value;
+var onaccountFieldA = document.getElementById('onaccountA').value;
+
+var plusSumA = parseFloat(purchasedgiftcertFieldA) + parseFloat(redeemedgiftcertFieldA) + parseFloat(onaccountFieldA);
+plusA.textContent = plusSumA.toFixed(2);
+
+var netsalesSumA = (parseFloat(cashandcoinreceiptFieldA) + parseFloat(checksFieldA) + parseFloat(financialaidFieldA) + parseFloat(checksFieldA) 
++ parseFloat(discoverFieldA) + parseFloat(manualcreditcardFieldA) + parseFloat(mastercard1FieldA) + parseFloat(mastercard2FieldA) 
++ parseFloat(visa1FieldA) + parseFloat(visa2FieldA)) - (parseFloat(salestax1FieldA) + parseFloat(salestax2FieldA) + 
+parseFloat(efolletttaxFieldA)) + (parseFloat(purchasedgiftcertFieldA) + parseFloat(redeemedgiftcertFieldA) + parseFloat(onaccountFieldA));
+
+netsalesA.textContent = netsalesSumA.toFixed(2);
+
+var totaltransactionsFieldA = document.getElementById('totaltransactionsA').value;
+var rentalincomeFieldA = document.getElementById('rentalincomeA').value;
+var paidoutFieldA = document.getElementById('paidoutA').value;
+var cashandcoinbagFieldA = document.getElementById('cashandcoinbagA').value;
+
+var totalcountedSumA = (parseFloat(cashandcoinbagFieldA) + parseFloat(financialaidFieldA)  
++ parseFloat(discoverFieldA) + parseFloat(manualcreditcardFieldA) + parseFloat(mastercard1FieldA) + parseFloat(mastercard2FieldA) 
++ parseFloat(visa1FieldA) + parseFloat(visa2FieldA));
+totalcountedA.textContent = totalcountedSumA.toFixed(2);
+
+var totaldepositsSumA = (parseFloat(cashandcoinreceiptFieldA) + parseFloat(financialaidFieldA) + parseFloat(checksFieldA) 
++ parseFloat(discoverFieldA) + parseFloat(manualcreditcardFieldA) + parseFloat(mastercard1FieldA) + parseFloat(mastercard2FieldA) 
++ parseFloat(visa1FieldA) + parseFloat(visa2FieldA)) + parseFloat(paidoutFieldA);
+totaldepositsA.textContent = totaldepositsSumA.toFixed(2);
+
+totalfromreceiptA.textContent = totaldepositsSumA.toFixed(2);
+
+var overshortSumA = totalcountedSumA - totaldepositsSumA;
+overshortA.textContent = overshortSumA.toFixed(2);
+
+}
+
+var calculateButtonA = document.getElementById('calculateButtonA');
+calculateButtonA.addEventListener('click', calculateA, false);
+</script>
+
+<!-- table B -->
+<table border="2px" style="float:left; width: 90%; margin-left: 5%;">
+
+	<tr class="">
+    		<td><label id='initialsLabelB'>Your Initials:</label></td>
+		<td><input class='initialsB' type='text' ></input></td>
+	</tr>
+	
+	<tr class="">
+    		<td><label id='registernumberLabel'>Register #:</label></td>
+    		<td><input id='registernumberB' type='number' ></input></td>
+	</tr>
+	
+	<tr class="">
+    		<td><label id='dateLabel'>Receipt DATE:</label></td>
+    		<td><input class='dateB' type='text' ></input></td>
+	</tr>
+	
+	
+	<tr class="">
+    		<td><label id='cashandcoinreceiptLabel' type='number'>Cash and Coin from Receipt:</label></td>
+		<td><input id='cashandcoinreceiptB' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='numberofchecksLabel' type='number'>Number of Checks:</label></td>
+		<td><input id='numberofchecksB' type='number'  value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='checksLabel' type='number' for='checksField'>Total Dollar Amount of Checks:</label></td>
+		<td><input id='checksB' type='number' value="0"></td>
+
+	</tr>
+	
+		
+	<tr class="">
+    		<td><label id='discoverLabel' type='number' >Discover Credit Card:</label></td>
+		<td><input id='discoverB' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='financialaidLabel' type='number'>Financial Aid Total:</label></td>
+		<td><input id='financialaidB' type='number' value="0"></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id="manualcreditcardLabel" type='number' >Manual Credit Card:</label></td>
+		<td><input id='manualcreditcardB' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='mastercard1Label' type='number' >Mastercard:</label></td>
+		<td><input id='mastercard1B' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='mastercard2Label' type='number'>Mastercard (2):</label></td>
+		<td><input id='mastercard2B' type='number' value="0"></input></td>
+
+	</tr>
+	
+
+	<tr class="">
+    		<td><label id='visa1Label' type='number'>Visa:</label></td>
+		<td><input id='visa1B' type='number' value="0"></input></td>
+
+	</tr>
+	
+
+	<tr class="">
+    		<td><label id='visa2Label' type='number'>Visa (2):</label></td>
+		<td><input id='visa2B' type='number' value="0"></input></td>
+	</tr>
+	
+	<tr  style="font-weight: bold;" class="">
+		<td><label id="totalreceiptsLabel">Total Receipts</label></td>
+		<td><p id='totalreceiptsB'></p></td>
+	</tr>
+	
+	<tr class="" style="font-weight: bold;">
+			<td><label id="totaldepositsLabel">Total Deposits</label></td>
+		<td><p id="totaldepositsB"></p></td>
+	</tr>
+
+	<tr class="">
+    		<td><label id='salestax1Label' type='number' >Sales Tax 1:</label></td>
+		<td><input id='salestax1B' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='salestax2Label' type='number'>Sales Tax 2:</label></td>
+		<td><input id='salestax2B' type='number'  value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='efolletttaxLabel' type='number'>eFollett Tax:</label></td>
+		<td><input id='efolletttaxB' type='number' value="0"></input></td>
+
+	</tr>
+	
+		
+	<tr class="">
+    		<td><label id='purchasedgiftcertLabel' type='number'>Purchased Gift Certificates:</label></td>
+		<td><input id='purchasedgiftcertB' type='number' value="0"></input></td>
+
+	
+	</tr>
+	<tr style="font-weight: bold;" class="">
+			<td><label id="lessLabel">Less:</label></td>
+		<td><p id="lessB"></p></td>
+	</tr>
+
+
+	
+
+	<tr class="">
+    		<td><label id='redeemedgiftcertLabel' type='number' >Redeemed Gift Certificates:</label></td>
+		<td><input id='redeemedgiftcertB' type='number'  value="0"></input></td>
+
+	</tr>
+	
+
+	<tr class="">
+    		<td><label id='onaccountLabel' type='number'>On Account Sales:</label></td>
+		<td><input id='onaccountB' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr style="font-weight: bold;" class="">
+			<td><label id="plusLabel"  >Plus:</label></td>
+		<td><p id="plusB"></p></td>
+	</tr>
+	
+	
+	
+		<tr style="font-weight: bold;" class="">
+			<td><label id="netsalesLabel"  >Net Sales</label></td>
+		<td><p id="netsalesB"></p></td>
+	</tr>
+	
+	<tr class="">
+    		<td><label id='totaltransactionsLabel' type='number'>Total Transactions:</label></td>
+		<td><input id='totaltransactionsB' type='number' value="0"></input></td>
+
+	</tr>
+
+	<tr class="">
+    		<td><label id='rentalincomeLabel' type='number' >Total Rental Income:</label></td>
+		<td><input id='rentalincomeB' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='paidoutLabel' type='number' >Paid In (from Paidout Transaction Summary Total as positive number):</label></td>
+		<td><input id='paidoutB' type='number' value="0"></input></td>
+
+	</tr>
+</table>
+<table border="2px" style="float:left; width: 90%; margin-right: 5%;">
+	<tr>
+		<td style="text-align: center;"><p>CASH REGISTER ONLY</p></td><td style="text-align: center;"><p>ONE SHEET PER REGISTER</p></td>
+	</tr>
+	<tr class="">
+    		<td><label id='cashandcoinbagLabel' type='number' >Counted Cash, Coin & Check from Bag:</label></td>
+		<td><input id='cashandcoinbagB' type='number' value="0"></input></td>
+
+	</tr>
+	
+	
+	<tr class="" style="font-weight: bold; ">
+    		<td style="text-align: right;"><label id='totalcountedLabel' type='number' >Total Counted:</label></td>
+		<td><p id='totalcountedB' type='number' style="text-align: left;"></p></td>
+
+	</tr>
+		<tr class="" style="font-weight: bold;">
+    		<td style="text-align: right;"><label id='totalfromreceiptLabel' type='number'>Total From Receipt:</label></td>
+		<td><p id='totalfromreceiptB' type='number' style="text-align: left;"></p></td>
+
+	</tr>
+	
+	<tr class="" style="font-weight: bold;">
+    		<td  style="text-align: right;"><label id='overshortLabel' type='number' >Over/Short:</label></td>
+		<td><p id='overshortB' type='number' style="text-align: left;"></p></td>
+
+	</tr>
+	
+	 <tr class="">
+    		<td><button id='calculateButtonB' type='button'>Calculate</button></td>
+		 
+	</tr>
+</table>
+<br><br><br><br><br>
+
+<!-- script to calculate B -->
+<script>
+function calculateB() {
+
+var cashandcoinreceiptFieldB = document.getElementById('cashandcoinreceiptB').value;
+var checksFieldB = document.getElementById('checksB').value;
+var discoverFieldB = document.getElementById('discoverB').value;
+var financialaidFieldB = document.getElementById('financialaidB').value;
+var manualcreditcardFieldB = document.getElementById('manualcreditcardB').value;
+var mastercard1FieldB = document.getElementById('mastercard1B').value;
+var mastercard2FieldB = document.getElementById('mastercard2B').value;
+var visa1FieldB = document.getElementById('visa1B').value;
+var visa2FieldB = document.getElementById('visa2B').value;
+
+var totalreceiptsSumB = parseFloat(cashandcoinreceiptFieldB) + parseFloat(checksFieldB) + parseFloat(financialaidFieldB) + parseFloat(checksFieldB) 
++ parseFloat(discoverFieldB) + parseFloat(manualcreditcardFieldB) + parseFloat(mastercard1FieldB) + parseFloat(mastercard2FieldB) 
++ parseFloat(visa1FieldB) + parseFloat(visa2FieldB);
+totalreceiptsB.textContent = totalreceiptsSumB.toFixed(2);
+
+var salestax1FieldB = document.getElementById('salestax1B').value;
+var salestax2FieldB = document.getElementById('salestax2B').value;
+var efolletttaxFieldB = document.getElementById('efolletttaxB').value;
+var purchasedgiftcertFieldB = document.getElementById('purchasedgiftcertB').value;
+
+var lessSumB = parseFloat(salestax1FieldB) + parseFloat(salestax2FieldB) + parseFloat(efolletttaxFieldB) + parseFloat(purchasedgiftcertFieldB);
+lessB.textContent = lessSumB.toFixed(2);
+
+var redeemedgiftcertFieldB = document.getElementById('redeemedgiftcertB').value;
+var onaccountFieldB = document.getElementById('onaccountB').value;
+
+var plusSumB = parseFloat(purchasedgiftcertFieldB) + parseFloat(redeemedgiftcertFieldB) + parseFloat(onaccountFieldB);
+plusB.textContent = plusSumB.toFixed(2);
+
+var netsalesSumB = (parseFloat(cashandcoinreceiptFieldB) + parseFloat(checksFieldB) + parseFloat(financialaidFieldB) + parseFloat(checksFieldB) 
++ parseFloat(discoverFieldB) + parseFloat(manualcreditcardFieldB) + parseFloat(mastercard1FieldB) + parseFloat(mastercard2FieldB) 
++ parseFloat(visa1FieldB) + parseFloat(visa2FieldB)) - (parseFloat(salestax1FieldB) + parseFloat(salestax2FieldB) + 
+parseFloat(efolletttaxFieldB)) + (parseFloat(purchasedgiftcertFieldB) + parseFloat(redeemedgiftcertFieldB) + parseFloat(onaccountFieldB));
+
+netsalesB.textContent = netsalesSumB.toFixed(2);
+
+var totaltransactionsFieldB = document.getElementById('totaltransactionsB').value;
+var rentalincomeFieldB = document.getElementById('rentalincomeB').value;
+var paidoutFieldB = document.getElementById('paidoutB').value;
+var cashandcoinbagFieldB = document.getElementById('cashandcoinbagB').value;
+
+var totalcountedSumB = (parseFloat(cashandcoinbagFieldB) + parseFloat(financialaidFieldB)  
++ parseFloat(discoverFieldB) + parseFloat(manualcreditcardFieldB) + parseFloat(mastercard1FieldB) + parseFloat(mastercard2FieldB) 
++ parseFloat(visa1FieldB) + parseFloat(visa2FieldB));
+totalcountedB.textContent = totalcountedSumB.toFixed(2);
+
+var totaldepositsSumB = (parseFloat(cashandcoinreceiptFieldB) + parseFloat(financialaidFieldB) + parseFloat(checksFieldB) 
++ parseFloat(discoverFieldB) + parseFloat(manualcreditcardFieldB) + parseFloat(mastercard1FieldB) + parseFloat(mastercard2FieldB) 
++ parseFloat(visa1FieldB) + parseFloat(visa2FieldB)) + parseFloat(paidoutFieldB);
+totaldepositsB.textContent = totaldepositsSumB.toFixed(2);
+
+totalfromreceiptB.textContent = totaldepositsSumB.toFixed(2);
+
+var overshortSumB = totalcountedSumB - totaldepositsSumB;
+overshortB.textContent = overshortSumB.toFixed(2);
+
+}
+
+var calculateButtonB = document.getElementById('calculateButtonB');
+calculateButtonB.addEventListener('click', calculateB, false);
+</script>
+
+
+<!-- table for BuyBack -->
+<table border="2px" style="float:left; width: 90%; margin-left: 5%;">
+
+	<tr class="">
+    		<td><label id='initialsLabel'>Your Initials:</label></td>
+		<td><input class='initialsBB' type='text' ></input></td>
+	</tr>
+	
+	<tr class="">
+    		<td><label id='registernumberLabel'>Register #:</label></td>
+    		<td><input id='registernumberBB' type='number' ></input></td>
+	</tr>
+	
+	<tr class="">
+    		<td><label id='dateLabel'>Receipt DATE:</label></td>
+    		<td><input class='dateBB' type='text' ></input></td>
+	</tr>
+	
+	
+	<tr class="">
+    		<td><label id='cashandcoinreceiptLabel' type='number'>Cash and Coin from Receipt:</label></td>
+		<td><input id='cashandcoinreceiptBB' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='numberofchecksLabel' type='number'>Number of Checks:</label></td>
+		<td><input id='numberofchecksBB' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='checksLabel' type='number' for='checksField'>Total Dollar Amount of Checks:</label></td>
+		<td><input id='checksBB' type='number' value="0"></td>
+
+	</tr>
+	
+		
+	<tr class="">
+    		<td><label id='discoverLabel' type='number' >Discover Credit Card:</label></td>
+		<td><input id='discoverBB' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr class="">
+    		<td><label id='financialaidLabel' type='number'>Financial Aid Total:</label></td>
+		<td><input id='financialaidBB' type='number' value="0"></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id="manualcreditcardLabel" type='number' >Manual Credit Card:</label></td>
+		<td><input id='manualcreditcardBB' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='mastercard1Label' type='number' >Mastercard:</label></td>
+		<td><input id='mastercard1BB' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='mastercard2Label' type='number'>Mastercard (2):</label></td>
+		<td><input id='mastercard2BB' type='number' value="0"></input></td>
+
+	</tr>
+	
+
+	<tr class="">
+    		<td><label id='visa1Label' type='number'>Visa:</label></td>
+		<td><input id='visa1BB' type='number' value="0"></input></td>
+
+	</tr>
+	
+
+	<tr class="">
+    		<td><label id='visa2Label' type='number'>Visa (2):</label></td>
+		<td><input id='visa2BB' type='number' value="0"></input></td>
+	</tr>
+	
+	<tr  style="font-weight: bold;" class="">
+		<td><label id="totalreceiptsLabel">Total Receipts</label></td>
+		<td><p id='totalreceiptsBB'></p></td>
+	</tr>
+	
+	<tr class="" style="font-weight: bold;">
+			<td><label id="totaldepositsLabel">Total Deposits</label></td>
+		<td><p id="totaldepositsBB"></p></td>
+	</tr>
+
+	<tr class="">
+    		<td><label id='salestax1Label' type='number' >Sales Tax 1:</label></td>
+		<td><input id='salestax1BB' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='salestax2Label' type='number'>Sales Tax 2:</label></td>
+		<td><input id='salestax2BB' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='efolletttaxLabel' type='number'>eFollett Tax:</label></td>
+		<td><input id='efolletttaxBB' type='number' value="0"></input></td>
+
+	</tr>
+	
+		
+	<tr class="">
+    		<td><label id='purchasedgiftcertLabel' type='number'>Purchased Gift Certificates:</label></td>
+		<td><input id='purchasedgiftcertBB' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr style="font-weight: bold;" class="">
+			<td><label id="lessLabel">Less:</label></td>
+		<td><p id="lessBB"></p></td>
+	</tr>
+
+
+	
+
+	<tr class="">
+    		<td><label id='redeemedgiftcertLabel' type='number' >Redeemed Gift Certificates:</label></td>
+		<td><input id='redeemedgiftcertBB' type='number' value="0"></input></td>
+
+	</tr>
+	
+
+	<tr class="">
+    		<td><label id='onaccountLabel' type='number'>On Account Sales:</label></td>
+		<td><input id='onaccountBB' type='number' value="0"></input></td>
+
+	</tr>
+	
+	<tr style="font-weight: bold;" class="">
+			<td><label id="plusLabel"  >Plus:</label></td>
+		<td><p id="plusBB"></p></td>
+	</tr>
+	
+	
+	
+		<tr style="font-weight: bold;" class="">
+			<td><label id="netsalesLabel"  >Net Sales</label></td>
+		<td><p id="netsalesBB"></p></td>
+	</tr>
+	
+	<tr class="">
+    		<td><label id='totaltransactionsLabel' type='number'>Total Transactions:</label></td>
+		<td><input id='totaltransactionsBB' type='number' value="0"></input></td>
+
+	</tr>
+
+	<tr class="">
+    		<td><label id='rentalincomeLabel' type='number' >Total Rental Income:</label></td>
+		<td><input id='rentalincomeBB' type='number' value="0"></input></td>
+	</tr>
+	
+</table>
+<table border="2px" style="float:left; width: 90%; margin-right: 5%;">
+	<tr>
+		<td style="text-align: center;"><p>**BUYBACK** REGISTER ONLY</p></td><td style="text-align: center;"><p>ONE SHEET PER REGISTER</p></td>
+	</tr>
+	<tr class="">
+    		<td><label id='paidoutLabel' type='number' >Paid In (from Paidout Transaction Summary Total as positive number):</label></td>
+		<td><input id='paidoutBB' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='retailpaidoutLabel' type='number' >Retail (Retail total from Dollars Spent Report as positive number):</label></td>
+		<td><input id='retailpaidoutBB' type='number' value="0"></input></td>
+
+	</tr>
+	<tr class="">
+    		<td><label id='wholesalepaidoutLabel' type='number' >Wholesale (Wholesale total from Dollars Spent Report as positive number):</label></td>
+		<td><input id='wholesalepaidoutBB' type='number' value="0"></input></td>
+
+	</tr>
+		<tr class="">
+    		<td><label id='cashpaidoutLabel'>Cash Paid Out (auto calculated total from Dollars Spent Report):</label></td>
+		<td><p id='cashpaidoutBB'></p></td>
+		<!-- the sum of Retail and Wholesale amounts paid out -->
+		
+
+		
+		
+	</tr>
+		<tr class="">
+    		<td><label id='fabuybacksLabel' type='number' >FA Buybacks (total dollar amount from basket as positive number):</label></td>
+		<td><input id='fabuybacksBB' type='number' value="0"></input></td>
+
+	</tr>
+		<tr class="">
+    		<td><label id='indrawerLabel' type='number' >In Drawer (auto calculated total cash from receipt):</label></td>
+		<td><p id='indrawerBB' type='number' ></p></td>
+		<!-- starting amount (paidout transaction summary total) minus the cash paid out (total from dollars spent report) -->
+	</tr>
+	
+	<tr class="">
+    		<td><label id='actualcashLabel' type='number' >Actual Cash (Counted Cash, Coin & Check from Bag):</label></td>
+		<td><input id='actualcashBB' type='number'  value="0"></input></td>
+		
+	</tr>
+	
+	<tr class="">
+    		<td><label id='pctransferLabel' type='number' >PC Transfer:</label></td>
+		<td><p id='pctransferBB' type='number' ></p></td>
+		<!-- this will be a zero if receipt cash is positive, or a negative number if receipt cash is negative -->
+
+	</tr>
+	
+	
+	
+	<tr class="" style="font-weight: bold; ">
+    		<td style="text-align: right;"><label id='totalcountedLabel' type='number' >Total Counted:</label></td>
+		<td><p id='totalcountedBB' type='number'  style="text-align: left;"></p></td>
+	</tr>
+	
+	<tr class="" style="font-weight: bold;">
+    		<td style="text-align: right;"><label id='totalfromreceiptLabel' type='number'>Total From Receipt:</label></td>
+		<td><p id='totalfromreceiptBB' type='number'  style="text-align: left;"></p></td>
+	</tr>
+	
+	<tr class="" style="font-weight: bold;">
+    		<td  style="text-align: right;"><label id='overshortLabel' type='number' >Over/Short:</label></td>
+		<td><p id='overshortBB' type='number' style="text-align: left;"></p></td>
+	</tr>
+	
+	 <tr class="">
+    		<td><button id='calculateButtonBB' type='button'>Calculate</button></td>
+		 
+	</tr>
+</table>
+<br><br><br><br><br>
+
+<!-- script to calculate BuyBack -->
+<script>
+
+function calculateBB() {
+
+var cashandcoinreceiptFieldBB = document.getElementById('cashandcoinreceiptBB').value;
+var checksFieldBB = document.getElementById('checksBB').value;
+var discoverFieldBB = document.getElementById('discoverBB').value;
+var financialaidFieldBB = document.getElementById('financialaidBB').value;
+var manualcreditcardFieldBB = document.getElementById('manualcreditcardBB').value;
+var mastercard1FieldBB = document.getElementById('mastercard1BB').value;
+var mastercard2FieldBB = document.getElementById('mastercard2BB').value;
+var visa1FieldBB = document.getElementById('visa1BB').value;
+var visa2FieldBB = document.getElementById('visa2BB').value;
+
+var totalreceiptsSumBB = parseFloat(cashandcoinreceiptFieldBB) + parseFloat(checksFieldBB) + parseFloat(financialaidFieldBB) + parseFloat(checksFieldBB) 
++ parseFloat(discoverFieldBB) + parseFloat(manualcreditcardFieldBB) + parseFloat(mastercard1FieldBB) + parseFloat(mastercard2FieldBB) 
++ parseFloat(visa1FieldBB) + parseFloat(visa2FieldBB);
+totalreceiptsBB.textContent = totalreceiptsSumBB.toFixed(2);
+
+var salestax1FieldBB = document.getElementById('salestax1BB').value;
+var salestax2FieldBB = document.getElementById('salestax2BB').value;
+var efolletttaxFieldBB = document.getElementById('efolletttaxBB').value;
+var purchasedgiftcertFieldBB = document.getElementById('purchasedgiftcertBB').value;
+
+var lessSumBB = parseFloat(salestax1FieldBB) + parseFloat(salestax2FieldBB) + parseFloat(efolletttaxFieldBB) + parseFloat(purchasedgiftcertFieldBB);
+lessBB.textContent = lessSumBB.toFixed(2);
+
+var redeemedgiftcertFieldBB = document.getElementById('redeemedgiftcertBB').value;
+var onaccountFieldBB = document.getElementById('onaccountBB').value;
+
+var plusSumBB = parseFloat(purchasedgiftcertFieldBB) + parseFloat(redeemedgiftcertFieldBB) + parseFloat(onaccountFieldBB);
+plusBB.textContent = plusSumBB.toFixed(2);
+
+var netsalesSumBB = (parseFloat(cashandcoinreceiptFieldBB) + parseFloat(checksFieldBB) + parseFloat(financialaidFieldBB) + parseFloat(checksFieldBB) 
++ parseFloat(discoverFieldBB) + parseFloat(manualcreditcardFieldBB) + parseFloat(mastercard1FieldBB) + parseFloat(mastercard2FieldBB) 
++ parseFloat(visa1FieldBB) + parseFloat(visa2FieldBB)) - (parseFloat(salestax1FieldBB) + parseFloat(salestax2FieldBB) + 
+parseFloat(efolletttaxFieldBB)) + (parseFloat(purchasedgiftcertFieldBB) + parseFloat(redeemedgiftcertFieldBB) + parseFloat(onaccountFieldBB));
+
+netsalesBB.textContent = netsalesSumBB.toFixed(2);
+
+var totaltransactionsFieldBB = document.getElementById('totaltransactionsBB').value;
+var rentalincomeFieldBB = document.getElementById('rentalincomeBB').value;
+var paidoutFieldBB = document.getElementById('paidoutBB').value;
+
+var retailpaidoutFieldBB = document.getElementById('retailpaidoutBB').value;
+var wholesalepaidoutFieldBB = document.getElementById('wholesalepaidoutBB').value;
+
+var cashpaidoutSumBB = (parseFloat(retailpaidoutFieldBB) + parseFloat(wholesalepaidoutFieldBB)) * -1;
+cashpaidoutBB.textContent = cashpaidoutSumBB.toFixed(2);
+
+/* indrawer is an arbitrary total of original paidout(paidin) minus buyback report */
+var indrawerSumBB = parseFloat(paidoutFieldBB) - (parseFloat(cashpaidoutSumBB) * -1);
+indrawerBB.textContent = indrawerSumBB.toFixed(2);
+
+/* actualcash is the physical amount of money in the bag (which includes the paidout(paidin) from the start) */
+var actualcashFieldBB = document.getElementById('actualcashBB').value;
+
+
+if (cashandcoinreceiptFieldBB < 0) {
+var pctransferSumBB = cashandcoinreceiptFieldBB;
+pctransferBB.textContent = parseFloat(pctransferSumBB);
+}
+else {
+pctransferBB.textContent = "0.00";
+}
+
+
+/* totaldepositsSum is for the field in the middle of the receipt */
+var totaldepositsSumBB = (parseFloat(cashandcoinreceiptFieldBB) + parseFloat(financialaidFieldBB) + parseFloat(checksFieldBB) 
++ parseFloat(discoverFieldBB) + parseFloat(manualcreditcardFieldBB) + parseFloat(mastercard1FieldBB) + parseFloat(mastercard2FieldBB) 
++ parseFloat(visa1FieldBB) + parseFloat(visa2FieldBB)) + parseFloat(paidoutFieldBB);
+totaldepositsBB.textContent = totaldepositsSumBB.toFixed(2);
+
+
+/* totalcountedSum will calculate money earned including the physical cash from the bag, 
+plus the cashpaidout(paidin) amount the drawer started with, minus the buyback report total */
+var totalcountedSumBB = parseFloat(actualcashFieldBB) + parseFloat(financialaidFieldBB) 
++ parseFloat(discoverFieldBB) + parseFloat(manualcreditcardFieldBB) + parseFloat(mastercard1FieldBB) + parseFloat(mastercard2FieldBB) 
++ parseFloat(visa1FieldBB) + parseFloat(visa2FieldBB);
+totalcountedBB.textContent = totalcountedSumBB.toFixed(2);
+
+/* totalfromreceiptSum will calculate money earned including cash from receipt, 
+plus the cashpaidout amount the drawer started with, minus the buyback report total */
+
+var totalfromreceiptSumBB =  (parseFloat(cashandcoinreceiptFieldBB) + parseFloat(financialaidFieldBB) + parseFloat(checksFieldBB) 
++ parseFloat(discoverFieldBB) + parseFloat(manualcreditcardFieldBB) + parseFloat(mastercard1FieldBB) + parseFloat(mastercard2FieldBB) 
++ parseFloat(visa1FieldBB) + parseFloat(visa2FieldBB) + parseFloat(paidoutFieldBB))
+- (parseFloat(retailpaidoutFieldBB) + parseFloat(wholesalepaidoutFieldBB));
+totalfromreceiptBB.textContent = totalfromreceiptSumBB.toFixed(2);
+
+
+var overshortSumBB = totalcountedSumBB - totalfromreceiptSumBB;
+overshortBB.textContent = overshortSumBB.toFixed(2);
+
+}
+
+var calculateButtonBB = document.getElementById('calculateButtonBB');
+calculateButtonBB.addEventListener('click', calculateBB, false);
+
+</script>
+
+
+
+
+<!-- table for Total Daily Cash Analysis -->
+<table border="2px" style="width: 90%; margin-left: 5%;">
+
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>1 Total Cash to be Deposited:</label></td>
+			<td></td>
+			<td></td>
+			<td></td>
+    		<td style="text-align: right;"><p id='totCashToBeDeposited' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>2 Less Cash Shortage from Prior Day:</label></td>
+			<td></td>
+			<td></td>
+			<td>This will be filled in from yesterday</td>
+    		<td style="text-align: right;"><input id='totLessCashShortage' type='number'  value="0"></input></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>3 Over/Short for the day:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='totOverShortForDay' type='number'></p></td>
+	</tr>
+	
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>4 Expected Cash Deposit:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='totExpectedCashDeposit' type='number'></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>5 Less Buyback:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='totLessBuyback' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: right;"><label>6 Expected Cash Deposit:</label></td>
+    		<td><p id='totExpectedCashDeposit2' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: right;"><label id=''>7 Less Buyback:</label></td>
+    		<td><p id='totLessBuyback2' type='number'  value="0"></p></td>
+	</tr>
+	
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: right;"><label>8 Difference:</label></td>
+			<td><p id='totDifference' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>9 Adjusted Cash Deposit:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='totAdjustedCashDeposit' type='number'  value="0"></p></td>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>10 Total of Yesterday's Difference from line 8 (only if it was Negative):</label></td>
+
+	
+    		<td style="text-align: left;"><label>11 Yesterday's Total from line 13 (only if yesterday's Line 14 was 0):</label></td>
+
+
+    		<td style="text-align: left;"><label>12 Adjusted Cash Deposit from today's line 9:</label></td>
+			    		
+			<td style="text-align: left;"><label>13 Total of Reimbursement Shortages:</label></td>						
+    		<td style="text-align: right;"><p id='totPreviousReimbursementShortage' type='number' maxlength='10' value="0"></p></td>
+	
+	</tr>
+	<tr style="text-align:right;">
+	    		<td><input id='totYesterdaysDifference' placeholder="As Negative Number" type="number" max="0" value="0"></input></td>
+				<td><input id='totYesterdaysTotal' placeholder="As Negative Number" type="number" max="0" value="0"></input></td>
+				<td><p id='totAdjustedCashDeposit2' type='number' value="0"></p></td>
+
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>14 Actual Cash Deposit:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='totActualCashDeposit' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>15 Number of Checks to Deposit:</label></td>
+    		<td><p id='totNumberOfChecks' type='number'  value="0"></p></td>
+	<td></td>
+    		<td style="text-align: left;"><label id=''>16 Dollar Amount of Checks to Deposit:</label></td>
+			<td style="text-align:right;"><p id='totDollarAmountOfChecks' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>17 Total Deposit for the Day:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='totDepositForDay' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>18 Credit Card Sales:</label></td>
+    		
+
+    		<td style="text-align: left;"><label>19 Square Sales:</label></td>
+    		
+			<td></td>
+    		<td style="text-align: left;"><label>20 Total of CC and Square:</label></td>
+			<td style="text-align:right;"><p id='totTotalofCCandSquare' type='number'  value="0"></p></td>
+			</tr>
+		<tr style="text-align:right;">
+			<td><p id='totCreditCardSales' type='number'  value="0"></p></td>
+			<td><input id='totSquareSales' type='number'  value="0"></input></td>
+			
+		</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>21 On Account Sales, not including Financial Aid:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='totOnAccountSales' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>22 All Sales Tax:</label></td>
+    		
+
+    		<td style="text-align: left;"><label>23 Financial Aid Tax:</label></td>
+    		
+			<td></td>
+    		<td style="text-align: left;"><label>24 Total of All Taxes:</label></td>
+			<td style="text-align:right;"><p id='totTotalOfAllTax' type='number'  value="0"></p></td>
+	</tr>
+	<tr style="text-align:right;">
+			<td><p id='totAllSalesTax' type='number'  value="0"></p></td>
+			<td><p id='totFinancialAidTax' type='number'  value="0"></p></td>
+			
+	</tr>
+</table>
+
+
+<table border="2px" style="width: 90%; margin-left: 5%;">
+	<tr>
+			<td></td><td style="text-align: center;"><p style="font-weight: bold;">**STUDENT ACCOUNTS AND PAYMENT RECAP**</p></td><td></td>
+	</tr>
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>25 Revenue Cash:</label></td>
+    		
+
+    		<td style="text-align: left;"><label>26 Revenue Over/Short for Today & Yesterday:</label></td>
+    		
+
+    		<td style="text-align: left;"><label>27 Revenue Checks:</label></td>
+			
+			<td style="text-align: left;"><label>28 Revenue Total:</label></td>
+			<td style="text-align: right;"><p id='totRevenueTotal' type='number'  value="0"></p></td>
+
+    		
+	</tr>
+	<tr style="text-align:right;">
+			<td><p id='totRevenueCash' type='number'  value="0"></p></td>
+			<td><p id='totRevenueOverShort' type='number'  value="0"></p></td>
+			<td><p id='totRevenueChecks' type='number'  value="0"></p></td>
+				</tr>
+	
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>29 Credit Cards and Square Total:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='totCreditCardsAndSquareTotal' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>30 BAR (0562-022-139.022) Bookstore A/R:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='tot30' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>31 BKD (0562-022-452.000) BKST ON ACCOUNT SALES (Bookstore Revenue):</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='tot31' type='number'  value="0"></p></td>
+	</tr>
+	
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>32 BTX (0562-022-244.000) BKST Tax Accrual:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='tot32' type='number'  value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>33 BKD (0562-02-452.000) Bookstore Sales Tax (Less Financial Aid):</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='tot33' type='number' value="0"></p></td>
+	</tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>34 Buybacks Today:</label></td>
+    		
+    		<td style="text-align: left;"><label>35 Buybacks Carryover:</label></td>
+
+    		<td style="text-align: left;"><label>36 Buybacks Adjusted:</label></td>
+			<td style="text-align: left;"><label>37 BKR (0562-022-548.000) BKST Resale Supplies:</label></td>
+			<td style="text-align: right;"><p id='tot37' type='number'  value="0"></p></td>
+	
+	</tr>
+	<tr style="text-align:right;">
+			<td><p id='totBuybacksToday' type='number'  value="0"></p></td>
+			<td><p id='totBuybackCarryover' type='number'  value="0"></p></td>
+			<td><p id='totBuybackAdjusted' type='number'  value="0"></p></td>
+    </tr>
+	
+	<tr style="text-align:right;">
+    		<td style="text-align: left;"><label>38 Deposit to the Bank:</label></td>
+						<td></td>
+						<td></td>
+						<td></td>
+    		<td style="text-align: right;"><p id='totDepositToTheBank' type='number'  value="0"></p></td>
+	</tr>
+	 <tr class="">
+    		<td><button id='calculateButtonTotals' type='button'>Calculate Totals</button></td>
+		 
+	</tr>
+	
+</table>
+
+
+<!-- script for Total Daily Cash Analysis -->
+<script>
+document.getElementById('overshortA').innerHTML = "0";
+document.getElementById('overshortB').innerHTML = "0";
+document.getElementById('overshortBB').innerHTML = "0";
+document.getElementById('totExpectedCashDeposit').innerHTML = "0";
+document.getElementById('totCashToBeDeposited').innerHTML = "0";
+document.getElementById('totOverShortForDay').innerHTML = "0";
+document.getElementById('totLessBuyback').innerHTML = "0";
+document.getElementById('totAdjustedCashDeposit').innerHTML = "0";
+document.getElementById('totActualCashDeposit').innerHTML = "0";
+document.getElementById('totPreviousReimbursementShortage').innerHTML = "0";
+
+
+function calculateTotals() {
+
+/* line 1 variables*/
+var cashandcoinreceiptAField = parseFloat(document.getElementById('cashandcoinreceiptA').value);
+var cashandcoinreceiptBField = parseFloat(document.getElementById('cashandcoinreceiptB').value);
+var cashandcoinreceiptBBField = parseFloat(document.getElementById('cashandcoinreceiptBB').value);
+
+/* line 1 calculation */
+var totCashToBeDepositedField = cashandcoinreceiptAField + cashandcoinreceiptBField + cashandcoinreceiptBBField; 
+/* line 1 post answer */
+totCashToBeDeposited.textContent = totCashToBeDepositedField.toFixed(2);
+
+/* line 2 variables */
+var totLessCashShortageField = document.getElementById('totLessCashShortage').value;
+
+/* line 3 variables*/
+var overshortAField = document.getElementById('overshortA').innerHTML;
+var overshortBField = document.getElementById('overshortB').innerHTML;
+var overshortBBField = document.getElementById('overshortBB').innerHTML;
+/* line 3 calculation */
+var totOverShortForDayField = parseFloat(overshortAField) + parseFloat(overshortBField) + parseFloat(overshortBBField);
+/* line 3 post answer */
+totOverShortForDay.textContent = totOverShortForDayField.toFixed(2);
+
+/*line 4 variables (listed above) */
+/* line 4 calculation*/
+var totExpectedCashDepositField = parseFloat(totCashToBeDepositedField) + parseFloat(totLessCashShortageField) + parseFloat(totOverShortForDayField);
+/*line 4 post answer */
+totExpectedCashDeposit.textContent = totExpectedCashDepositField.toFixed(2);
+
+/* line 6  is a repeat of line 4 */
+totExpectedCashDeposit2.textContent = totExpectedCashDepositField;
+
+/* line 7  variables */
+var totLessBuybackField2 = document.getElementById('cashpaidoutBB').innerHTML;
+/*line 7 post answer */
+totLessBuyback2.textContent = totLessBuybackField2;
+
+/* line 8 is (line 6) + (line 7) */
+var totDifferenceField = parseFloat(totExpectedCashDepositField) + parseFloat(totLessBuybackField2);
+totDifference.textContent = totDifferenceField.toFixed(2);
+
+/* line 5 variables*/
+/* if line 8 totDifference is positive, put line 7 totLessBuyback2 into line 5 totLessBuyback as negative,
+/* if line 8 totDifference is negative, put line 4 totExpectedCashDeposit into line 5 totLessBuyback as negative.
+*/
+if (totDifferenceField > 0) {
+	totLessBuyback.textContent = totLessBuybackField2;
+}
+else { 
+	totLessBuyback.textContent = totExpectedCashDepositField * -1;
+}
+/* line 9 totAdjustedCashDeposit   is line 4 totExpectedCashDeposit + line 5 totLessBuyback */
+var totExpectedCashDepositField = document.getElementById('totExpectedCashDeposit').innerHTML;
+var totLessBuybackField = document.getElementById('totLessBuyback').innerHTML;
+totAdjustedCashDeposit.textContent = parseFloat(totExpectedCashDepositField) + parseFloat(totLessBuybackField);
+
+/* line 10   is yesterday's total from line 8 (only if Negative) */
+var totYesterdaysDifferenceField = document.getElementById('totYesterdaysDifference').value;
+
+/* line 11   is yesterday's total from line 13 (only if yesterday's line 14 was 0)  */
+var totYesterdaysTotalField = document.getElementById('totYesterdaysTotal').value;
+
+/* line 12    is repeat of line 9 */
+totAdjustedCashDeposit2.textContent = parseFloat(totExpectedCashDepositField) + parseFloat(totLessBuybackField);
+
+/* line 13 totPreviousReimbursementShortage   is line 10 + line 11 + line 12 */
+var totAdjustedCashDeposit2Field = document.getElementById('totAdjustedCashDeposit2').innerHTML;
+var totPreviousReimbursementShortageField = parseFloat(totYesterdaysDifferenceField) + parseFloat(totYesterdaysTotalField) + parseFloat(totAdjustedCashDeposit2Field);
+totPreviousReimbursementShortage.textContent = totPreviousReimbursementShortageField.toFixed(2);
+
+
+/* confused on line 14 - check my notes at work */
+/* i think line 14 is just a repeat of line 13 */
+totActualCashDeposit.textContent = totPreviousReimbursementShortageField.toFixed(2);
+
+
+/* line 14 totActualCashDeposit    is line 9 totAdjustedCashDeposit + line 13 totPreviousReimbursementShortage   */
+//var totAdjustedCashDepositField = document.getElementById('totAdjustedCashDeposit').innerHTML;
+//var totPreviousReimbursementShortageField2 = document.getElementById('totPreviousReimbursementShortage').innerHTML;
+//var totActualCashDepositField = parseFloat(totAdjustedCashDepositField) - parseFloat(totPreviousReimbursementShortageField2);
+//if (totActualCashDepositField > 0) {
+//	totActualCashDeposit.textContent = totActualCashDepositField.toFixed(2);
+//}
+//else { 
+//	totActualCashDeposit.textContent = "0";
+//}
+
+
+/* line 15   is number of checks  */
+var numberofchecksA = document.getElementById('numberofchecksA').value;
+var numberofchecksB = document.getElementById('numberofchecksB').value;
+var numberofchecksBB = document.getElementById('numberofchecksBB').value;
+/* line 15   calculation */
+var totNumberOfChecksField = parseFloat(numberofchecksA) + parseFloat(numberofchecksB) + parseFloat(numberofchecksBB);
+totNumberOfChecks.textContent = totNumberOfChecksField;
+
+/* line 16   is total dollar amount of all checks  */
+var checksA = document.getElementById('checksA').value;
+var checksB = document.getElementById('checksB').value;
+var checksBB = document.getElementById('checksBB').value;
+/* line 16   calculation */
+var totDollarAmountOfChecksField = parseFloat(checksA) + parseFloat(checksB) + parseFloat(checksBB);
+totDollarAmountOfChecks.textContent = totDollarAmountOfChecksField.toFixed(2);
+
+/* line 17 totDepositForDay  is line 14 totActualCashDeposit + line 16 totDollarAmountOfChecks   */
+var totActualCashDepositField = document.getElementById('totActualCashDeposit').innerHTML;
+var totDollarAmountOfChecksField2 = document.getElementById('totDollarAmountOfChecks').innerHTML;
+/* line 17 calculation  */
+var totDepositForDayField = parseFloat(totActualCashDepositField) + parseFloat(totDollarAmountOfChecksField2);
+totDepositForDay.textContent = totDepositForDayField.toFixed(2);
+
+/* line 18   is total of credit card sales  */
+/* line 18   variables  */
+var totCreditCardA = parseFloat(document.getElementById('discoverA').value) + 
+parseFloat(document.getElementById('manualcreditcardA').value) + 
+parseFloat(document.getElementById('mastercard1A').value) + 
+parseFloat(document.getElementById('mastercard2A').value) + 
+parseFloat(document.getElementById('visa1A').value) + 
+parseFloat(document.getElementById('visa2A').value);
+var totCreditCardB = parseFloat(document.getElementById('discoverB').value) + 
+parseFloat(document.getElementById('manualcreditcardB').value) + 
+parseFloat(document.getElementById('mastercard1B').value) + 
+parseFloat(document.getElementById('mastercard2B').value) + 
+parseFloat(document.getElementById('visa1B').value) + 
+parseFloat(document.getElementById('visa2B').value);
+var totCreditCardBB = parseFloat(document.getElementById('discoverBB').value) + 
+parseFloat(document.getElementById('manualcreditcardBB').value) + 
+parseFloat(document.getElementById('mastercard1BB').value) + 
+parseFloat(document.getElementById('mastercard2BB').value) + 
+parseFloat(document.getElementById('visa1BB').value) + 
+parseFloat(document.getElementById('visa2BB').value);
+/*line 18 calculation and post answer */
+var totCreditCardSalesField = parseFloat(totCreditCardA) + parseFloat(totCreditCardB) + parseFloat(totCreditCardBB);
+totCreditCardSales.textContent = totCreditCardSalesField.toFixed(2);
+
+/* line 19    is square sales  */
+var totSquareSalesField = parseFloat(document.getElementById('totSquareSales').value);
+/*
+
+/* line 20   is totCreditCardSales + square sales  */
+var totTotalofCCandSquareField = totCreditCardSalesField + totSquareSalesField;
+totTotalofCCandSquare.textContent = totTotalofCCandSquareField.toFixed(2);
+
+/* line 21   is totOnAccountSales  */
+var onaccountFieldA = parseFloat(document.getElementById('onaccountA').value);
+var onaccountFieldB = parseFloat(document.getElementById('onaccountB').value);
+var onaccountFieldBB = parseFloat(document.getElementById('onaccountBB').value);
+
+var totOnAccountSalesField = onaccountFieldA + onaccountFieldB + onaccountFieldBB;
+totOnAccountSales.textContent = totOnAccountSalesField.toFixed(2);
+
+/* line 22   is totAllSalesTax  */
+var salestax1FieldA = parseFloat(document.getElementById('salestax1A').value);
+var salestax2FieldA = parseFloat(document.getElementById('salestax2A').value);
+var salestax1FieldB = parseFloat(document.getElementById('salestax1B').value);
+var salestax2FieldB = parseFloat(document.getElementById('salestax2B').value);
+var salestax1FieldBB = parseFloat(document.getElementById('salestax1BB').value);
+var salestax2FieldBB = parseFloat(document.getElementById('salestax2BB').value);
+/* line 22 calculations */
+var totAllSalesTaxField = salestax1FieldA + salestax2FieldA + salestax1FieldB +
+salestax2FieldB + salestax1FieldBB + salestax2FieldBB;
+/* line 22 post answer */
+totAllSalesTax.textContent = totAllSalesTaxField.toFixed(2);
+
+/* line 23   is totFinancialAidTax  */
+var efolletttaxFieldA = parseFloat(document.getElementById('efolletttaxA').value);
+var efolletttaxFieldB = parseFloat(document.getElementById('efolletttaxB').value);
+var efolletttaxFieldBB = parseFloat(document.getElementById('efolletttaxBB').value);
+/* line 23 calculations */
+var totFinancialAidTaxField = efolletttaxFieldA + efolletttaxFieldB + efolletttaxFieldBB;
+/* line 23 post answer */
+totFinancialAidTax.textContent = totFinancialAidTaxField.toFixed(2);
+
+/* line 24   is totAllSalesTax + totFinancialAidTax  */
+var totTotalOfAllTaxField = totAllSalesTaxField + totFinancialAidTaxField;
+totTotalOfAllTax.textContent = totTotalOfAllTaxField.toFixed(2);
+
+/* line 25   is totRevenueCash from totCashToBeDeposited from above */
+totRevenueCash.textContent = totCashToBeDepositedField.toFixed(2);
+
+/* line 26   is totRevenueOverShort which is totLessCashShortageField (yesterday's shortage) + 
+totOverShortForDayField (today's shortage) from above */
+var totRevenueOverShortField = parseFloat(totLessCashShortageField) + totOverShortForDayField;
+totRevenueOverShort.textContent = totRevenueOverShortField.toFixed(2);
+
+/* line 27   is totRevenueChecks from above  */
+totRevenueChecks.textContent = totDollarAmountOfChecksField;
+
+
+
+
+
+/* line 28   is totRevenueTotal which is line 25 totRevenueCash (today's cash from receipt) + 
+line 2 totLessCashShortage (yesterday's overshort) + line 3 totOverShortForDay (today's overshort) 
++ line 27 totRevenueChecks (today's total of checks)
+ (do not add today's overshort)*/
+var totRevenueCashField = parseFloat(document.getElementById('totRevenueCash').innerHTML);
+var totOverShortForDayField = parseFloat(document.getElementById('totOverShortForDay').innerHTML);
+var totRevenueChecksField = parseFloat(document.getElementById('totRevenueChecks').innerHTML);
+
+totRevenueTotalField = totRevenueCashField + parseFloat(totLessCashShortageField) 
++ totOverShortForDayField + totRevenueChecksField;
+totRevenueTotal.textContent = totRevenueTotalField.toFixed(2);
+
+
+
+
+
+/*
+
+var totRevenueChecksField = document.getElementById('totRevenueChecks').value;
+var totRevenueTotalField = document.getElementById('totRevenueTotal').value;
+var totCreditCardsAndSquareTotalField = document.getElementById('totCreditCardsAndSquareTotal').value;
+var tot30Field = document.getElementById('tot30').value;
+var tot31Field = document.getElementById('tot31').value;
+var tot32Field = document.getElementById('tot32').value;
+var tot33Field = document.getElementById('tot33').value;
+var totBuybacksTodayField = document.getElementById('totBuybacksToday').value;
+var totBuybackCarryoverField = document.getElementById('totBuybackCarryover').value;
+var totBuybackAdjustedField = document.getElementById('totBuybackAdjusted').value;
+var tot37Field = document.getElementById('tot37').value;
+var totDepositToTheBankField = document.getElementById('totDepositToTheBank').value;
+*/
+}
+
+var calculateButtonTotals = document.getElementById('calculateButtonTotals');
+calculateButtonTotals.addEventListener('click', calculateTotals, false);
+</script>
+
+
+
+</body>
+</html>
