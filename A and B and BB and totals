@@ -2,24 +2,30 @@
 <head>
 	
 <style>
-.left {
-	float:left;
+#instructions {
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 5%;
+	width: 100%;
+}
+#instructions table {
+	width: 60%;
 	}
-.right {
-	float: right;
+#buttonsDiv {
+	margin-left: 5%;
+	margin-bottom: 5%;
+    background-color: rgb(200, 176, 226);
+	width: 60%;
+	border-collapse: collapse;
+	border: 1px solid #999;
+	border-radius: 6px;
 	}
+.transferTable {
+width: 60%;
+}
 .bold {
 	font-weight: bold;
 	}
-.totalsTable {
-	width: 80%;
-	}
-.totalsTable td {
-	min-width: 100px;
-	}
-.totalsTable input {
-	margin-top: 8%;
-}
 table {
 	display: block;
     width: 40%; 
@@ -35,12 +41,10 @@ th, td {
 	vertical-align:top;
 	border: 1px solid #999;
 	padding: 5px;
+	margin-right: -100px;
 	}
 table tr:nth-child(even) {
-    background-color: rgba(173,216,200,.5);
-    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
-    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
-    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;   
+    background-color: rgb(200, 176, 226);   
 	transition: 0.6s ease;		
 }
 
@@ -48,7 +52,7 @@ table tr:nth-child(odd) {
 	transition: 0.6s ease;
 }
 table tr:hover {
-	background-color: rgba(153,153,153,.4);
+	background-color: rgb(153,153,153);
 	transition: 0.6s ease;
 } 
 
@@ -57,11 +61,25 @@ table th {
 	background-color: rgb(173,216,200);
 	transition: 0.6s ease;
 }
+.totalsTable {
+	width: 80%;
+	}
+.totalsTable td {
+	min-width: 150px;
+	max-width: 200px;
+	}
+	
+.totalsTable td:nth-child(1) {
+min-width: 150px;
+max-width: 250px;
+}
 
+.totalsTable input {
+	margin-top: 8%;
+}
 input {
 width: 100px;
 background-color: #FF9;
-
 }
 button {
 margin: 10px;
@@ -70,6 +88,10 @@ border-radius: 5px;
 section {
 display: none;
 }
+.center {
+text-align: center
+}
+
 
 @media print {
 body { 
@@ -90,6 +112,12 @@ width: auto;
 button {
 display: none;
 }
+.left {
+	float:left;
+	}
+.right {
+	float: right;
+	}
 .moveToPrint {
 float:right;
 }
@@ -107,19 +135,65 @@ padding: 1px;
 section {
 display:block;
 }
+#buttonsDiv {
+display: none;
+}
 }
 
 	</style>
 </head>
 
 <body>
-<div>
+<div id="instructions" style="display: block">
+	<table> 
+		<th>JJC Bookstore Daily Cash Reconciliation</th>
+		<tr>
+			<td>1. Input each Cash Register, Buyback Register and Calculate Totals.</td>
+		</tr>
+		<tr>
+			<td>2. Transfer the totals to appropriate paperwork.</td>
+		</tr>
+		<tr>
+			<td>3. Count the Cash Drawer and add to the Petty Cash Worksheet.</td>
+		</tr>
+		<tr>
+			<td>4. Count the Safe and add to the Petty Cash Worksheet. 
+		<br>(Verify the sum of today's Cash Drawer + today's Safe Count equal the sum of yesterday's total)</td>
+		</tr>
+		<tr>
+			<td>5. Make the banks for all registers.
+		<br>(Set aside any cash, coin and checks for the daily deposit)</td>
+		</tr>
+		<tr>
+			<td>6. Make the Daily Deposit.</td>
+		</tr>
+		<tr>
+			<td>7. Count the Cash Drawer again after the daily deposit is made and update the total.</td>
+		</tr>
+		<tr>
+			<td>8. Move cash & coin from Safe to Cash Drawer if needed.</td>
+		</tr>
+		<tr>
+			<td>9. Gather paperwork for reports.</td>
+		</tr>
+
+	</table>
+	
+</div>
+<!-- end daily reconcile instructions -->
+
+<div id="buttonsDiv">
 	<button id="buttonA" onclick="showA()">Cash Register</button>
 	<button id="buttonB" onclick="showB()">Cash Register</button>
 	<button id="buttonC" onclick="showC()">Cash Register</button>
+	<br>
 	<button id="buttonBB" onclick="showBB()">Buyback Register</button>
-	<button id="buttonTotals" onclick="showTotals()">Add Totals</button>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button id="buttonTotals" onclick="showTotals()">Calculate Totals</button>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button id="buttonTransfer" onclick="showTransfer()">Show Transfer Totals</button>
 </div>
+
 <script>    
 
 function showA() {
@@ -129,6 +203,8 @@ function showA() {
 	var C = document.getElementById('buttonC');
 	var BB = document.getElementById('buttonBB');
 	var T = document.getElementById('buttonTotals');
+	var TX = document.getElementById('buttonTransfer');
+	var I = document.getElementById('instructions');
 	
     if (A.style.display === 'none') {
         A.style.display = 'block';
@@ -136,12 +212,16 @@ function showA() {
 		C.style.display = 'none';
 		BB.style.display = 'none';
 		T.style.display = 'none';
+		TX.style.display = 'none';
+		I.style.display = 'none';
     } else {
         A.style.display = 'none';
 		B.style.display = 'initial';
 		C.style.display = 'initial';
 		BB.style.display = 'initial';
 		T.style.display = 'initial';
+		TX.style.display = 'initial';
+		I.style.display = 'initial';
     }
 }
 
@@ -151,6 +231,8 @@ function showB() {
 	var C = document.getElementById('buttonC');
 	var BB = document.getElementById('buttonBB');
 	var T = document.getElementById('buttonTotals');
+	var TX = document.getElementById('buttonTransfer');
+	var I = document.getElementById('instructions');
 	
     if (B.style.display === 'none') {
         A.style.display = 'none';
@@ -158,12 +240,16 @@ function showB() {
 	    C.style.display = 'none';
 		BB.style.display = 'none';
 		T.style.display = 'none';
+		TX.style.display = 'none';
+		I.style.display = 'none';
     } else {
         A.style.display = 'initial';
-        C.style.display = 'initial';		
-		B.style.display = 'none';
+        B.style.display = 'none';		
+		C.style.display = 'initial';
 		BB.style.display = 'initial';
 		T.style.display = 'initial';
+		TX.style.display = 'initial';
+		I.style.display = 'initial';
     }
 }
 
@@ -174,6 +260,8 @@ function showC() {
 	var C = document.getElementById('divC');
 	var BB = document.getElementById('buttonBB');
 	var T = document.getElementById('buttonTotals');
+	var TX = document.getElementById('buttonTransfer');
+	var I = document.getElementById('instructions');
 	
     if (C.style.display === 'none') {
         A.style.display = 'none';
@@ -181,12 +269,16 @@ function showC() {
 		C.style.display = 'block';
 		BB.style.display = 'none';
 		T.style.display = 'none';
+		TX.style.display = 'none';
+		I.style.display = 'none';
     } else {
         A.style.display = 'initial';
 		B.style.display = 'initial';
 		C.style.display = 'none';
 		BB.style.display = 'initial';
 		T.style.display = 'initial';
+		TX.style.display = 'initial';
+		I.style.display = 'initial';
     }
 }
 
@@ -196,6 +288,8 @@ function showBB() {
 	var C = document.getElementById('buttonC');
 	var BB = document.getElementById('divBB');
 	var T = document.getElementById('buttonTotals');
+	var TX = document.getElementById('buttonTransfer');
+	var I = document.getElementById('instructions');
 	
     if (BB.style.display === 'none') {
         A.style.display = 'none';
@@ -203,12 +297,16 @@ function showBB() {
 		C.style.display = 'none';
 		BB.style.display = 'block';
 		T.style.display = 'none';
+		TX.style.display = 'none';
+		I.style.display = 'none';
     } else {
         A.style.display = 'initial';
 		B.style.display = 'initial';
 		C.style.display = 'initial';
 		BB.style.display = 'none';
 		T.style.display = 'initial';
+		TX.style.display = 'initial';
+		I.style.display = 'initial';
     }
 }
 
@@ -219,6 +317,8 @@ function showTotals() {
 	var C = document.getElementById('buttonC');
 	var BB = document.getElementById('buttonBB');
 	var T = document.getElementById('divTotals');
+	var TX = document.getElementById('buttonTransfer');
+	var I = document.getElementById('instructions');
 	
     if (T.style.display === 'none') {
         A.style.display = 'none';
@@ -226,14 +326,47 @@ function showTotals() {
 		C.style.display = 'none';
 		BB.style.display = 'none';
 		T.style.display = 'block';
+		TX.style.display = 'none';
+		I.style.display = 'none';
     } else {
         A.style.display = 'initial';
 		B.style.display = 'initial';
 		C.style.display = 'initial';
 		BB.style.display = 'initial';
 		T.style.display = 'none';
+		TX.style.display = 'initial';
+		I.style.display = 'initial';
     }
 }
+
+function showTransfer() {
+	var A = document.getElementById('buttonA');
+	var B = document.getElementById('buttonB');
+	var C = document.getElementById('buttonC');
+	var BB = document.getElementById('buttonBB');
+	var T = document.getElementById('buttonTotals');
+	var TX = document.getElementById('divTransfer');
+	var I = document.getElementById('instructions');
+	
+    if (TX.style.display === 'none') {
+        A.style.display = 'none';
+		B.style.display = 'none';
+		C.style.display = 'none';
+		BB.style.display = 'none';
+		T.style.display = 'none';
+		TX.style.display = 'block';
+		I.style.display = 'none';
+    } else {
+        A.style.display = 'initial';
+		B.style.display = 'initial';
+		C.style.display = 'initial';
+		BB.style.display = 'initial';
+		T.style.display = 'initial';
+		TX.style.display = 'none';
+		I.style.display = 'initial';
+    }    	
+}
+
 </script>
 
 <div id="divA" style="display: none;">
@@ -244,10 +377,9 @@ function showTotals() {
 
 <!-- table A -->
 <table class="left">
-	<tr class="bold tableHeader">
-		<td><h5 class="bold">CASH REGISTER<br>
-		ONE SHEET PER REGISTER</h5></td><td><h5 class="bold">INPUT FROM X-TAPE</h5></td>
-	</tr>
+	<th class="">
+		CASH REGISTER *ONE SHEET PER REGISTER*</th><th>INPUT FROM X-TAPE
+	</th>
 	
 	<tr class="">
     		<td><label id='initialsLabel'>Your Initials:</label></td>
@@ -385,9 +517,9 @@ function showTotals() {
 </table>
 
 <table class="left moveToPrint">
-	<tr class="bold tableHeader">
-		<td><h5 class="bold">CASH REGISTER TOTALS</h5></td><td><h5 class="bold">INPUT FROM BAG</h5></td>
-	</tr>
+	<th class="">
+		CASH REGISTER *ONE SHEET PER REGISTER*</th><th>INPUT FROM BAG
+	</th>
 	<tr class="">
     		<td><label id='cashandcoinbagLabel' type='number'>Count the Total Cash & Coin in Bag:</label></td>
 		<td><input id='cashandcoinbagA' type='number' min="0" value="0"></input></td>
@@ -436,6 +568,10 @@ function showTotals() {
 <script>
 
 function calculateA() {
+
+var registernumberFieldA = document.getElementById('registernumberA').value;
+var buttonFieldA = document.getElementById('buttonA').innerHTML;
+document.getElementById('buttonA').innerHTML = buttonFieldA + " " + registernumberFieldA;
 
 var cashandcoinreceiptFieldA = document.getElementById('cashandcoinreceiptA').value;
 var checksFieldA = document.getElementById('checksA').value;
@@ -509,10 +645,9 @@ calculateButtonA.addEventListener('click', calculateA, false);
 
 <!-- table B -->
 <table class="left">
-	<tr class="bold tableHeader">
-		<td><h5 class="bold">CASH REGISTER<BR>
-		ONE SHEET PER REGISTER</h5></td><td><h5 class="bold">INPUT FROM X-TAPE</h5></td>
-	</tr>
+	<th class="">
+		CASH REGISTER *ONE SHEET PER REGISTER*</th><th>INPUT FROM X-TAPE
+	</th>
 	
 	<tr class="">
     		<td><label id='initialsLabelB'>Your Initials:</label></td>
@@ -674,9 +809,9 @@ calculateButtonA.addEventListener('click', calculateA, false);
 </table>
 
 <table class="left moveToPrint">
-	<tr class="bold tableHeader">
-		<td><h5 class="bold">CASH REGISTER TOTALS</h5></td><td><h5 class="bold">INPUT FROM BAG</h5></td>
-	</tr>
+	<th class="">
+		CASH REGISTER *ONE SHEET PER REGISTER*</th><th>INPUT FROM BAG
+	</th>
 	<tr class="">
     		<td><label id='cashandcoinbagLabel' type='number' >Count the Total Cash & Coin in Bag:</label></td>
 		<td><input id='cashandcoinbagB' type='number' min="0" value="0"></input></td>
@@ -722,6 +857,10 @@ calculateButtonA.addEventListener('click', calculateA, false);
 <!-- script to calculate B -->
 <script>
 function calculateB() {
+
+var registernumberFieldB = document.getElementById('registernumberB').value;
+var buttonFieldB = document.getElementById('buttonB').innerHTML;
+document.getElementById('buttonB').innerHTML = buttonFieldB + " " + registernumberFieldB;
 
 var cashandcoinreceiptFieldB = document.getElementById('cashandcoinreceiptB').value;
 var checksFieldB = document.getElementById('checksB').value;
@@ -796,10 +935,9 @@ calculateButtonB.addEventListener('click', calculateB, false);
 
 <!-- table C -->
 <table class="left">
-	<tr class="bold tableHeader">
-		<td><h5 class="bold">CASH REGISTER<br>
-		ONE SHEET PER REGISTER</h5></td><td><h5 class="bold">INPUT FROM X-TAPE</h5></td>
-	</tr>
+	<th class="">
+		CASH REGISTER *ONE SHEET PER REGISTER*</th><th>INPUT FROM X-TAPE
+	</th>
 	
 	<tr class="">
     		<td><label id='initialsLabel'>Your Initials:</label></td>
@@ -937,9 +1075,9 @@ calculateButtonB.addEventListener('click', calculateB, false);
 </table>
 
 <table class="left moveToPrint">
-	<tr class="bold tableHeader">
-		<td><h5 class="bold">CASH REGISTER TOTALS</h5></td><td><h5 class="bold">INPUT FROM BAG</h5></td>
-	</tr>
+	<th class="">
+		CASH REGISTER *ONE SHEET PER REGISTER*</th><th>INPUT FROM BAG
+	</th>
 	<tr class="">
     		<td><label id='cashandcoinbagLabel' type='number'>Count the Total Cash & Coin in Bag:</label></td>
 		<td><input id='cashandcoinbagC' type='number' min="0" value="0"></input></td>
@@ -988,6 +1126,10 @@ calculateButtonB.addEventListener('click', calculateB, false);
 <script>
 
 function calculateC() {
+
+var registernumberFieldC = document.getElementById('registernumberC').value;
+var buttonFieldC = document.getElementById('buttonC').innerHTML;
+document.getElementById('buttonC').innerHTML = buttonFieldC + " " + registernumberFieldC;
 
 var cashandcoinreceiptFieldC = document.getElementById('cashandcoinreceiptC').value;
 var checksFieldC = document.getElementById('checksC').value;
@@ -1064,9 +1206,9 @@ calculateButtonC.addEventListener('click', calculateC, false);
 
 <!-- table for BuyBack -->
 <table class="left">
-	<tr class="bold tableHeader">
-		<td><h5 class="bold">**BUYBACK** REGISTER</h5></td><td><h5 class="bold">INPUT FROM X-TAPE</h5></td>
-	</tr>
+	<th class="">
+		BUYBACK REGISTER *ONE SHEET PER REGISTER*</th><th>INPUT FROM X-TAPE
+	</th>
 	<tr class="">
     		<td><label id='initialsLabel'>Your Initials:</label></td>
 		<td><input class='initialsBB' type='text' ></input></td>
@@ -1223,9 +1365,9 @@ calculateButtonC.addEventListener('click', calculateC, false);
 </table>
 
 <table class="left moveToPrint">
-	<tr class="bold tableHeader">
-		<td><h5 class="bold">**BUYBACK** REGISTER TOTALS</h5></td><td><h5 class="bold">INPUT FROM BAG & BUYBACK REPORT</h5></td>
-	</tr>
+	<th class="">
+		BUYBACK REGISTER *ONE SHEET PER REGISTER*</th><th>INPUT FROM BAG
+	</th>
 
 	<tr class="">
     		<td><label id='retailpaidoutLabel' type='number' >Retail (Retail total from Dollars Spent Report):</label></td>
@@ -1248,7 +1390,7 @@ calculateButtonC.addEventListener('click', calculateC, false);
 	</tr>
 		<tr class="">
     		<td><label id='fabuybacksLabel' type='number' >FA Buybacks (total dollar amount from basket):</label></td>
-		<td><input id='fabuybacksBB' type='number' min="0" ></input></td>
+		<td><input id='fabuybacksBB' type='number' min="0" value="0"></input></td>
 
 	</tr>
 		<tr class="">
@@ -1310,12 +1452,16 @@ calculateButtonC.addEventListener('click', calculateC, false);
 
 <!-- script to calculate BuyBack -->
 <script>
+document.getElementById('fabuybacksBB').innerHTML = "0";
 document.getElementById('retailpaidoutBB').innerHTML = "0";
 document.getElementById('wholesalepaidoutBB').innerHTML = "0";
 document.getElementById('paidoutBB').innerHTML = "0";
 
 function calculateBB() {
 
+var registernumberFieldBB = document.getElementById('registernumberBB').value;
+var buttonFieldBB = document.getElementById('buttonBB').innerHTML;
+document.getElementById('buttonBB').innerHTML = buttonFieldBB + " " + registernumberFieldBB;
 
 var cashandcoinreceiptFieldBB = document.getElementById('cashandcoinreceiptBB').value;
 var checksFieldBB = document.getElementById('checksBB').value;
@@ -1425,13 +1571,10 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
 
 <!-- table for Total Daily Cash Analysis -->
 <table class="totalsTable">
-	<tr class="bold">
-		<td colspan="2"><h5 class="bold">TOTALS</h5></td><td colspan="2"><h5 class="bold">CALCULATED FROM ALL REGISTERS</h5></td>
-	</tr>
+	<th colspan="2" class="bold center">TOTALS</th><th colspan="2" class="center">CALCULATED FROM ALL REGISTERS</th>
 	
 	<tr>
     		<td><label>1 Total Cash to be Deposited:</label></td>
-			
 			<td></td>
 			<td></td>
     		<td><p id='totCashToBeDeposited' type='number'  value="0"></p></td>
@@ -1439,7 +1582,6 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
 	
 	<tr>
     		<td><label>2 Less Cash Shortage from Prior Day:</label></td>
-		
 			<td></td>
 			<td>Input from yesterday's sheet Line 3</td>
     		<td><input id='totLessCashShortage' type='number'  value="0"></input></td>
@@ -1447,16 +1589,13 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
 	
 	<tr>
     		<td><label>3 Over/Short for the day:</label></td>
-					
 						<td></td>
 						<td></td>
     		<td><p id='totOverShortForDay' type='number'></p></td>
 	</tr>
 	
-	
 	<tr>
     		<td><label>4 Expected Cash Deposit:</label></td>
-					
 						<td></td>
 						<td></td>
     		<td><p id='totExpectedCashDeposit' type='number'></p></td>
@@ -1464,7 +1603,6 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
 	
 	<tr>
     		<td><label>5 Less Buyback:</label></td>
-					
 						<td></td>
 						<td></td>
     		<td><p id='totLessBuyback' type='number'  value="0"></p></td>
@@ -1474,16 +1612,14 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
 						<td></td>
     		<td><label>6 Expected Cash Deposit:</label></td>
     		<td><p id='totExpectedCashDeposit2' type='number'  value="0"></p></td>
-						<td></td>
-						
+						<td></td>		
 	</tr>
 	
 	<tr>
 						<td></td>
     		<td><label id=''>7 Less Buyback:</label></td>
     		<td><p id='totLessBuyback2' type='number'  value="0"></p></td>
-						<td></td>
-					
+						<td></td>	
 	</tr>
 	
 	
@@ -1492,56 +1628,40 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
     		<td><label>8 Difference:</label></td>
 			<td><p id='totDifference' type='number'  value="0"></p></td>
 						<td></td>
-					
 	</tr>
 	
 	<tr>
     		<td><label>9 Adjusted Cash Deposit:</label></td>
 						<td></td>
 						<td></td>
-					
     		<td><p id='totAdjustedCashDeposit' type='number'  value="0"></p></td>
 	
 	<tr>
-			<td></td>
     		<td><label>10 Total of Yesterday's Difference.<br>
 			Input yesterday's Line 8 (only if it was Negative):</label></td>
-	
     		<td><label>11 Yesterday's Total.<br>
 			Input yesterday's Line 13 (only if yesterday's Line 14 was 0):</label></td>
-
     		<td><label>12 Adjusted Cash Deposit from today's line 9:</label></td>
-		
+			<td><label>13 Less Previous Reimbursement Shortages:</label></td>	
 	</tr>	
 	<tr>
-				<td></td>
 	    		<td><input id='totYesterdaysDifference' value="0" type="number" max="0"></input><br>
 				(As Negative #)</td>
 				<td><input id='totYesterdaysTotal' value="0" type="number" max="0"></input><br>
 				(As Negative #)</td>
 				<td><p id='totAdjustedCashDeposit2' type='number' value="0"></p></td>
-		
+		    	<td><p id='totPreviousReimbursementShortage' type='number' maxlength='10' value="0"></p></td>
 	</tr>		
-	<tr>
-			
-			<td></td>
-			<td></td>
-			<td><label>13 Total of Reimbursement Shortages:</label></td>						
-    		<td><p id='totPreviousReimbursementShortage' type='number' maxlength='10' value="0"></p></td>
-
-	
 	<tr>
     		<td><label>14 Actual Cash Deposit:</label></td>
 						<td></td>
 						<td></td>
-					
     		<td><p id='totActualCashDeposit' type='number'  value="0"></p></td>
 	</tr>
 	
 	<tr>
     		<td><label>15 Number of Checks to Deposit:</label></td>
     		<td><p id='totNumberOfChecks' type='number'  value="0"></p></td>
-
     		<td><label id=''>16 Dollar Amount of Checks to Deposit:</label></td>
 			<td><p id='totDollarAmountOfChecks' type='number'  value="0"></p></td>
 	</tr>
@@ -1550,7 +1670,6 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
     		<td><label>17 Total Deposit for the Day:</label></td>
 						<td></td>
 						<td></td>
-					
     		<td><p id='totDepositForDay' type='number'  value="0"></p></td>
 	</tr>
 	
@@ -1558,18 +1677,12 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
 			<td></td>
     		<td><label>18 Credit Card Sales:</label></td>
     		<td><label>19 Square Sales:</label></td>
-    		<td></td>
-		</tr>
-		<tr>
+	    	<td><label>20 Total of CC and Square:</label></td>
+	</tr>
+	<tr>
 						<td></td>
 			<td><p id='totCreditCardSales' type='number'  value="0"></p></td>
 			<td><p id='totSquareSales' type='number'  value="0"></p></td>
-						<td></td>
-		</tr>
-	<tr>
-						<td></td>
-						<td></td>
-	    	<td><label>20 Total of CC and Square:</label></td>
 			<td><p id='totTotalofCCandSquare' type='number'  value="0"></p></td>
 	</tr>
 	
@@ -1577,29 +1690,22 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
     		<td><label>21 On Account Sales, not including Financial Aid:</label></td>
 						<td></td>
 						<td></td>
-					
     		<td><p id='totOnAccountSales' type='number'  value="0"></p></td>
 	</tr>
-	
 	<tr>
 						<td></td>
     		<td><label>22 All Sales Tax:</label></td>
     		<td><label>23 Financial Aid Tax:</label></td>
-    					<td></td>
+	    	<td><label>24 Total of All Taxes:</label></td>
 	</tr>
 
 	<tr>
 						<td></td>
 			<td><p id='totAllSalesTax' type='number'  value="0"></p></td>
 			<td><p id='totFinancialAidTax' type='number'  value="0"></p></td>
-						<td></td>
-	</tr>
-	<tr>
-						<td></td>
-						<td></td>
-	    	<td><label>24 Total of All Taxes:</label></td>
 			<td><p id='totTotalOfAllTax' type='number'  value="0"></p></td>
 	</tr>
+
 </table>
 
 <section>
@@ -1607,46 +1713,31 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
 </section>
 
 <table class="totalsTable">
-	<tr class="bold">
-			<td colspan="4"><h5 class="bold">**STUDENT ACCOUNTS AND PAYMENT RECAP**</h5></td>
-	</tr>
+	<th class="bold center" colspan="4">**STUDENT ACCOUNTS AND PAYMENT RECAP**</th>
 	<tr>
-			<td></td>
     		<td><label>25 Revenue Cash:</label></td>
-
     		<td><label>26 Revenue Over/Short for Today & Yesterday:</label></td>
-
     		<td><label>27 Revenue Checks:</label></td>
-    	
+    		<td><label>28 Revenue Total:</label></td>
 	</tr>
 	<tr>	
-			<td></td>
 			<td><p id='totRevenueCash' type='number'  value="0"></p></td>
 			<td><p id='totRevenueOverShort' type='number'  value="0"></p></td>
 			<td><p id='totRevenueChecks' type='number'  value="0"></p></td>
-		
-	</tr>
-	<tr>
-					
-						<td></td>
-						<td></td>
-			<td><label>28 Revenue Total:</label></td>
 			<td><p id='totRevenueTotal' type='number'  value="0"></p></td>
 	</tr>
 	
 	<tr>
     		<td><label>29 Credit Cards and Square Total:</label></td>
 						<td></td>
-						<td></td>
-					
+						<td></td>	
     		<td><p id='totCreditCardsAndSquareTotal' type='number'  value="0"></p></td>
 	</tr>
 	
 	<tr>
     		<td><label>30 BAR (0562-022-139.022) Bookstore A/R:</label></td>
 						<td></td>
-						<td></td>
-					
+						<td></td>		
     		<td><p id='tot30' type='number'  value="0"></p></td>
 	</tr>
 	
@@ -1654,7 +1745,6 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
     		<td><label>31 BKD (0562-022-452.000) BKST ON ACCOUNT SALES (Bookstore Revenue):</label></td>
 						<td></td>
 						<td></td>
-					
     		<td><p id='tot31' type='number'  value="0"></p></td>
 	</tr>
 	
@@ -1663,55 +1753,87 @@ calculateButtonBB.addEventListener('click', calculateBB, false);
     		<td><label>32 BTX (0562-022-244.000) BKST Tax Accrual:</label></td>
 						<td></td>
 						<td></td>
-					
     		<td><p id='tot32' type='number'  value="0"></p></td>
 	</tr>
 	
 	<tr>
     		<td><label>33 BKD (0562-02-452.000) Bookstore Sales Tax (Less Financial Aid):</label></td>
 						<td></td>
-						<td></td>
-						
+						<td></td>		
     		<td><p id='tot33' type='number' value="0"></p></td>
 	</tr>
-	
-	<tr>
-			<td></td>
-    		<td><label>34 Buybacks Today:</label></td>
-    		
-    		<td><label>35 Buybacks Carryover:</label></td>
-
-    		<td><label>36 Buybacks Adjusted:</label></td>
-		
+	<tr>					
+			<td><label>34 BKR (0562-022-548.000) BKST Resale Supplies:</label></td>
+						<td></td>
+						<td></td>
+			<td><p id='tot34' type='number'  value="0"></p></td>
 	</tr>
 	<tr>
 			<td></td>
+    		<td><label>35 Buybacks Today:</label></td>
+    		<td><label>36 Buybacks Carryover:</label></td>
+    		<td><label>37 Buybacks Adjusted:</label></td>		
+	</tr>
+	<tr>
+						<td></td>
 			<td><p id='totBuybacksToday' type='number'  value="0"></p></td>
 			<td><p id='totBuybackCarryover' type='number'  value="0"></p></td>
 			<td><p id='totBuybackAdjusted' type='number'  value="0"></p></td>
-			
     </tr>
-	<tr>
-						
-						<td></td>
-						<td></td>
-			<td><label>37 BKR (0562-022-548.000) BKST Resale Supplies:</label></td>
-			<td><p id='tot37' type='number'  value="0"></p></td>
+
 	<tr>
     		<td><label>38 Deposit to the Bank:</label></td>
 						<td></td>
 						<td></td>
-				
     		<td><p id='totDepositToTheBank' type='number'  value="0"></p></td>
 	</tr>
 	 <tr class="">
     		<td><button id='calculateButtonTotals' type='button'>Calculate Totals</button></td>
 			<td colspan="3"></td>
-		 
 	</tr>
 	
 </table>
+
 </div>
+
+
+<div id="divTransfer" style="display:none">
+
+<table class="transferTable">
+	<th class="bold" colspan="3">TRANSFER TO Z-TAPE</th><th></th>
+	<th class="bold">TRANSFER TO PETTY CASH WORKSHEET</th>
+	<tr>
+			<td><label>FA Report<br>(Compare to XIMRC Report)</label></td>
+    		<td><label>FA Buyback<br>(Give to Service Center)</label></td>
+    		<td><label>FA Total</label></td>
+			<td></td>
+			<td><label>Vouchers</label></td>	
+	</tr>
+	<tr>
+			<td><p id='totFinancialAid' type='number'  value="0"></p></td>
+			<td><p id='totFABuybacks' type='number'  value="0"></p></td>
+			<td><p id='totFinancialAidPlusFABuyback' type='number'  value="0"></p></td>
+			<td></td>
+			<td><p id='totVouchers'></p></td>
+    </tr>
+	<tr>
+			<td><label>FA Tax<br>(Compare to XIMRC Report)</label></td>
+    		<td><label>CC Total<br>(Compare to PAYWARE Report)</label></td>
+    		<td><label>Sales Tax Total</label></td>		
+			<td></td>
+			<td></td>
+	</tr>
+	<tr>
+			<td><p id='totFinancialAidTaxZTape' type='number'  value="0"></p></td>
+			<td><p id='totTotalofCCandSquareZTape' type='number'  value="0"></p></td>
+			<td><p id='totAllSalesTaxZTape' type='number'  value="0"></p></td>
+			<td></td>
+			<td></td>
+    </tr>
+</table>
+</div>
+
+
 <!-- end div totals -->
 
 <!-- script for Total Daily Cash Analysis -->
@@ -1740,10 +1862,16 @@ document.getElementById('totAllSalesTax').innerHTML = "0";
 document.getElementById('totFinancialAidTax').innerHTML = "0";
 document.getElementById('totTotalOfAllTax').innerHTML = "0";
 document.getElementById('cashpaidoutBB').innerHTML = "0";
+document.getElementById('totBuybacksToday').innerHTML = "0";
 document.getElementById('totAdjustedCashDeposit2').innerHTML = "0";
 document.getElementById('totBuybackCarryover').innerHTML = "0";
 document.getElementById('totBuybackAdjusted').innerHTML = "0";
-
+document.getElementById('totFinancialAidPlusFABuyback').innerHTML = "0";
+document.getElementById('totFABuybacks').innerHTML = "0";
+document.getElementById('totFinancialAidPlusFABuyback').innerHTML = "0";
+document.getElementById('totFinancialAidTaxZTape').innerHTML = "0";
+document.getElementById('totTotalofCCandSquareZTape').innerHTML = "0";
+document.getElementById('totAllSalesTaxZTape').innerHTML = "0";
 
 
 function calculateTotals() {
@@ -1774,7 +1902,8 @@ totOverShortForDay.textContent = totOverShortForDayField.toFixed(2);
 
 /*line 4 variables (listed above) */
 /* line 4 calculation*/
-var totExpectedCashDepositField = parseFloat(totCashToBeDepositedField) + parseFloat(totLessCashShortageField) + parseFloat(totOverShortForDayField);
+var totExpectedCashDepositField = parseFloat(totCashToBeDepositedField) + parseFloat(totLessCashShortageField) + 
+parseFloat(totOverShortForDayField);
 /*line 4 post answer */
 if (totExpectedCashDepositField < 0) {
 totExpectedCashDeposit.textContent = "0.00"
@@ -1782,6 +1911,7 @@ totExpectedCashDeposit.textContent = "0.00"
 else {
 totExpectedCashDeposit.textContent = totExpectedCashDepositField.toFixed(2);
 }
+
 /* line 6  is a repeat of line 4 */
 totExpectedCashDeposit2.textContent = totExpectedCashDepositField.toFixed(2);
 
@@ -1803,7 +1933,7 @@ if (totDifferenceField > 0 || totDifferenceField == 0) {
 	totLessBuyback.textContent = totLessBuybackSum.toFixed(2);
 }
 else { 
-	totExpectedCashDepositSum = parseFloat(totExpectedCashDepositField);
+	totExpectedCashDepositSum = parseFloat(totExpectedCashDepositField) * -1;
 	totLessBuyback.textContent = totExpectedCashDepositSum.toFixed(2);
 }
 
@@ -1990,7 +2120,8 @@ totRevenueTotal.textContent = totRevenueTotalField.toFixed(2);
 totCreditCardsAndSquareTotal.textContent = totTotalofCCandSquareField.toFixed(2);
 
 /* line 30   is a repeat of line 21, but in negative format */
-tot30.textContent = totOnAccountSalesField.toFixed(2) *-1;
+var tot30Field = totOnAccountSalesField * -1;
+tot30.textContent = tot30Field.toFixed(2);
 
 /* line 31   is a repeat of line 21, but in positive format */
 tot31.textContent = totOnAccountSalesField.toFixed(2);
@@ -1999,35 +2130,45 @@ tot31.textContent = totOnAccountSalesField.toFixed(2);
 tot32.textContent = totTotalOfAllTaxField.toFixed(2);
 
 /* line 33  is a repeat of line 24, but in negative format  */
-tot33.textContent = totAllSalesTaxField.toFixed(2) * -1;
+var tot33Field = totTotalOfAllTaxField * -1;
+tot33.textContent = tot33Field.toFixed(2);
 
-/* line 34  is a repeat of line 7 */
-totBuybacksToday.textContent = totLessBuybackField2;
+/* line 34 totLessBuyback   is a repeat of line 5 totLessBuybackField  */
+var totLessBuybackFieldSum = parseFloat(totLessBuybackField);
+tot34.textContent = totLessBuybackFieldSum.toFixed(2);
 
+/* line 35 totBuybacksToday   is a repeat of line 5 totLessBuybackField */
+totBuybacksToday.textContent = totLessBuybackFieldSum.toFixed(2);
 
-
-
-
-
-/* line 35 ?? what goes in here?  */
-/* is this line 10 + line 11? */
+/* line 36 totBuybackCarryover   is line 10 totYesterdaysDifferenceField + line 11 totYesterdaysTotalField  */
 var totBuybackCarryoverField = parseFloat(totYesterdaysDifferenceField) + parseFloat(totYesterdaysTotalField);
 totBuybackCarryover.textContent = totBuybackCarryoverField.toFixed(2);
 
-
-
-
-/* line 36 ?? what goes in here?  */
-/* is this line 34 + line 35?  */
-var totBuybackAdjustedField = totLessBuybackField2 + totBuybackCarryoverField;
-totBuybackAdjusted.textContent = totBuybackAdjustedField.toFixed(2);
-
-
-/* line 37 ?? what goes in here?  */
+/* line 37 totBuybackAdjusted is a repeat of line 12   */
+var totAdjustedCashDepositFieldSum = parseFloat(totAdjustedCashDeposit2Sum);
+totBuybackAdjusted.textContent = totAdjustedCashDepositFieldSum.toFixed(2);
 
 /* line 38   is a repeat of line 17  */
 totDepositToTheBank.textContent = totDepositForDayField.toFixed(2);
 
+/************** Totals to Transfer  *****************/
+
+totFinancialAid.textContent = totFinancialAidField.toFixed(2);
+
+var totFABuybacksField = parseFloat(document.getElementById('fabuybacksBB').value);
+totFABuybacks.textContent = totFABuybacksField.toFixed(2);
+
+var totFinancialAidPlusFABuybackField = totFinancialAidField + totFABuybacksField;
+totFinancialAidPlusFABuyback.textContent = totFinancialAidPlusFABuybackField.toFixed(2);
+
+totFinancialAidTaxZTape.textContent = totFinancialAidTaxField.toFixed(2);
+
+totTotalofCCandSquareZTape.textContent = totTotalofCCandSquareField.toFixed(2);
+
+totAllSalesTaxZTape.textContent = totAllSalesTaxField.toFixed(2);
+
+var totVouchersField = totBuybackCarryoverField * -1;
+totVouchers.textContent = totVouchersField.toFixed(2);
 }
 
 var calculateButtonTotals = document.getElementById('calculateButtonTotals');
